@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'springsecurity'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	
+	// https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.23.2'
+
+
+	//runtime('org.postgresql:postgresql')
+	runtime('com.h2database:h2')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+}
